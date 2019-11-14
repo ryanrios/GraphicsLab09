@@ -957,6 +957,7 @@ function updateEnergy(){
 
 function addEnergy(){
   game.energy += game.coinValue;
+  coinSound.play();
   game.energy = Math.min(game.energy, 100);
 }
 
@@ -1064,6 +1065,7 @@ function handleKeyDown(keyEvent){
 var fieldDistance, energyBar, replayMessage, fieldLevel, levelCircle;
 var mediaElement;
 var musicPlaying = false;
+var coinSound;
 
 function init(event){
 
@@ -1092,9 +1094,11 @@ function init(event){
   document.addEventListener('touchend', handleTouchEnd, false);
 
   var listener = new THREE.AudioListener();
-	var audio = new THREE.Audio( listener );
-	mediaElement = new Audio( 'music/bensound-theelevatorbossanova.mp3' );
-	mediaElement.loop = true;
+  var audio = new THREE.Audio( listener );
+  mediaElement = new Audio( 'music/bensound-theelevatorbossanova.mp3' );
+  mediaElement.loop = true;
+  coinSound = new Audio('music/coins.wav');
+	
 	// mediaElement.play();
 
 
